@@ -27,4 +27,19 @@ Description from [The Pushshift Reddit Dataset](https://arxiv.org/pdf/2001.08435
 |**selftext**|*object*|sep_sub|The text that is associated with the submission|
 |**author**|*object*|sep_cmt|clustering of traps though DBScan and KNeighborsClassifier |
 |**parent_id**|*object*|sep_cmt|Identifier of the parent of this comment, might be the identifier of the submission if it is top-level comment or the identifier of another comment, e.g., “t1 dbu5bpp”| 
-|**body**|*object*|sep_cmt|The comment’s text, e.g., “This is an example comment”| 
+
+# Summary of our findings
+
+1. When comparing the top 20 words before and after covid-onset, the words 'store','point','sample','rewards','rouge' have completely fallen off the top 20 after covid onset, indicating that redditors have much less to say about their in-store shopping experiences and their VVIP Sephora Rouge membership and benefits.  
+
+2. By using Latent Dirichlet Allocation (LDA) to perform topic modelling, there are twelve topics that we can manually label. They are 'purchases', 'skincare', 'fragrance', 'online order issues', 'shipping issues', 'makeup-lipwear', 'customer experience', 'makeup-natural', 'customer rewards', 'haircare', 'appreciation', 'makeup-longwear'. To reinforce the earlier findings, 'customer rewards' and 'customer experience' make up a smaller percentage of the topics after covid onset. 'Fragrance', 'makeup-natural' topics have an increase after covid onset.
+
+3. At times, the reddit posts are about more than one topic. Eg: "I want to use my Rouge points on a perfume sample, but the promo code is not working." covers the topics of customer rewards, fragrance and online order issues. By feeding in our earlier twelve topics to zero-shot classification, we get a richer idea of the topics being discussed. On a subset of popular submissions, and threshold value of 85%, zero-shot returned 6,196 labels for 3,764 posts. 
+
+4. Using the bertweet base sentiment analysis, the topics were scored as positive, neutral and negative. Although the sentiments about the topics before and after covid did not change much, there is significant amount of negative sentiments about 'online order issues' and 'shipping issues'. 
+
+# Recommendations
+
+1. Marketing team to target Rouge shoppers, or former Rouge shoppers and promote Shop-instore events
+2. Service recovery with online order or delivery issues and monitoring of ‘humour’ category for product or services fails
+3. Future work of identifying brands and product names trending over the SS/AW seasons
